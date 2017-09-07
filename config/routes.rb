@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'map/home'
+
   resources :emergencies
   resources :clients
   resources :hospitals
