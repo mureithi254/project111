@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'map/home'
+  root 'map#home'
 
   resources :emergencies
   resources :clients

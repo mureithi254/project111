@@ -1,2 +1,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+      #map {
+        width: 70%;
+        height: 600px;
+        background-color: grey;
+        float: right;
+      }
+      
+      #controls {
+         width: 30%;
+         height: 900px;
+         background-color: white;
+         float: left;
+      }
+      .client-details{
+        font-size: 15px;
+      }
+     

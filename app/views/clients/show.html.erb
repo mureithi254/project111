@@ -1,39 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Client Number: </strong>
-    <%= @client.id %>
-</p>
+   <div class="client-details">
+    <p>
+      <strong>Client Number: </strong>
+        <%= @client.id %>
+    </p>
 
-<p>
-  <strong>Fname:</strong>
-  <%= @client.fname %>
-</p>
+    <p>
+      <strong>Fname:</strong>
+      <%= @client.fname %>
+    </p>
 
-<p>
-  <strong>Lname:</strong>
-  <%= @client.lname %>
-</p>
+    <p>
+      <strong>Lname:</strong>
+      <%= @client.lname %>
+    </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @client.phone %>
-</p>
+    <p>
+      <strong>Phone:</strong>
+      <%= @client.phone %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @client.email %>
+    </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @client.status %>
-</p>
+    <p>
+      <strong>Status:</strong>
+      <%= @client.status %>
+    </p>
 
-<p>
-  <strong>Insurance:</strong>
-  <%= @client.insurance %>
-</p>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+    <p>
+      <strong>Insurance:</strong>
+      <%= @client.insurance %>
+    </p>
+   </div>
+  <%= link_to 'Edit', edit_client_path(@client),:class => 'btn btn-default' %> |
+  <%= link_to 'Back', clients_path,:class => 'btn btn-default' %>
+</div>
