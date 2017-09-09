@@ -3,19 +3,22 @@
 
 
       #map {
-        width: 70%;
+        width: 90%;
         height: 600px;
         background-color: grey;
         float: right;
       }
       
       #controls {
-         width: 30%;
-         height: 900px;
-         background-color: white;
+         width: 10%;
+         height: 600px;
+         background-color: rgb(60,59,55);
          float: left;
       }
       .client-details{
         font-size: 15px;
+      }
+      .client-new,.emergency-new{
+        float: right;
       }
      

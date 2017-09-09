@@ -1,6 +1,12 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
+</div>
+  <%= link_to new_client_path ,:class => 'btn btn-info btn-lg client-new' do %>
+    <span class="glyphicon glyphicon-plus"></span>New Client
+  <% end %>
+ </div>
+
  <h1>Clients</h1>
  <div class="jumbotron">
     <table class='table table-hover'>
@@ -36,7 +42,4 @@
   </table>
 
   <br>
-
- </div>
-  <%= link_to 'New Client', new_client_path ,:class => 'btn btn-default'%>
 </div>

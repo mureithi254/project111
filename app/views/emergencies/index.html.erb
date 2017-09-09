@@ -1,35 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1>Emergencies</h1>
+  <%= link_to new_emergency_path ,:class => 'btn btn-danger btn-lg emergency-new' do %>
+    <span class="glyphicon glyphicon-plus"></span>New Emergency
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Address</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Description</th>
-      <th>Client</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <h1><strong>Emergencies</strong></h1>
+  <div class="jumbotron">
+     <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>Description</th>
+          <th>Client</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @emergencies.each do |emergency| %>
-      <tr>
-        <td><%= emergency.address %></td>
-        <td><%= emergency.latitude %></td>
-        <td><%= emergency.longitude %></td>
-        <td><%= emergency.description %></td>
-        <td><%= emergency.client %></td>
-        <td><%= link_to 'Show', emergency %></td>
-        <td><%= link_to 'Edit', edit_emergency_path(emergency) %></td>
-        <td><%= link_to 'Destroy', emergency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @emergencies.each do |emergency| %>
+          <tr>
+            <td><%= emergency.address %></td>
+            <td><%= emergency.latitude %></td>
+            <td><%= emergency.longitude %></td>
+            <td><%= emergency.description %></td>
+            <td><%= emergency.client.id %></td>
+            <td><%= link_to 'Show', emergency,:class => "btn btn-success" %></td>
+            <td><%= link_to 'Edit', edit_emergency_path(emergency),:class => "btn btn-info" %></td>
+            <td><%= link_to 'Destroy', emergency, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "btn btn-danger"%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<br>
+  </div>
+    
+  <br>
 
-<%= link_to 'New Emergency', new_emergency_path %>
