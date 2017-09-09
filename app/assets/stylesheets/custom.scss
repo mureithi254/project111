@@ -18,7 +18,10 @@
       .client-details{
         font-size: 15px;
       }
-      .client-new,.emergency-new{
+      .client-new,.emergency-new,.hospital-new{
         float: right;
       }
-     
+      .button-drop{
+       margin-bottom: -100px ;
+       float: left
+      }

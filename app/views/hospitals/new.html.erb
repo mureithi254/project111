@@ -1,5 +1,5 @@
-<h1>New Hospital</h1>
-
-<%= render 'form', hospital: @hospital %>
-
-<%= link_to 'Back', hospitals_path %>
+<div class="container">
+   <h1>Register New Hospital</h1>
+   <%= render 'form', hospital: @hospital %>
+   <%= link_to 'Back', hospitals_path,:class => 'btn btn-link' %>
+</div>

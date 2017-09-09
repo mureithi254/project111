@@ -3,10 +3,6 @@
   <head>
     <title>Project111</title>
     <%= csrf_meta_tags %>
-    <script src="//maps.google.com/maps/api/js?key=AIzaSyCHO9KHI0Z1QGVEynmb-d1z2ioxDenHPz4"></script>
-    <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
-    <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
-
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -23,18 +19,24 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Geolocator</a>
+      <%= link_to 'Geolocator', root_path,:class => 'btn btn-default btn-lg' %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-         <li><%= link_to 'Home', new_emergency_path %></li>
-        <li><%= link_to 'Add User', new_client_path %></li>
+         <li><%= link_to 'New Emergency', new_emergency_path ,:class => 'btn btn-link btn-lg'%></li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
+
+          <select class="custom-select mb-2 mr-sm-2 mb-sm-0 btn btn-default" id="inlineFormCustomSelect">
+            <option selected>Range(km)</option>
+            <option value="1">1</option>
+            <option value="2">5<option>
+            <option value="3">10</option>
+          </select>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
@@ -43,8 +45,6 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
           <ul class="dropdown-menu">
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Add User</a></li>
                 <li><a href="#">Admin Dashboard</a></li>
                 <li><a href="#">Login</a></li>
           </ul>
@@ -53,7 +53,8 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-    <%= yield %>
+<div class="container-fluid">
+   <%= yield %>
+</div> 
   </body>
 </html>

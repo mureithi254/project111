@@ -1,6 +1,9 @@
-<h1>Editing Emergency</h1>
+<div class="container">
+	<h1>Edit Emergency Details:</h1>
 
-<%= render 'form', emergency: @emergency %>
+	<%= render 'form', emergency: @emergency %>
 
-<%= link_to 'Show', @emergency %> |
-<%= link_to 'Back', emergencies_path %>
+	<%= link_to 'Show', @emergency ,:class => 'btn btn-default' %> |
+	<%= link_to 'Back', emergencies_path ,:class => 'btn btn-link'%>
+</div>
+

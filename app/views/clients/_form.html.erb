@@ -11,38 +11,54 @@
     </div>
   <% end %>
 
-  
-  <div class="field">
-    <%= form.label :fname %>
-    <%= form.text_field :fname, id: :client_fname %>
-  </div>
+  <div class="container-fluid jumbotron">
+     <div class="row">
+        <div class="form-group col-md-4">
+          <%= form.label :fname %>
+          <%= form.text_field :fname, id: :client_fname,autofocus: true,:class => "form-control" %>
+        </div>
+     </div>
 
-  <div class="field">
-    <%= form.label :lname %>
-    <%= form.text_field :lname, id: :client_lname %>
-  </div>
+   <div class="row">
+      <div class="form-group col-md-4">
+        <%= form.label :lname %>
+        <%= form.text_field :lname, id: :client_lname,autofocus: true,:class => "form-control"  %>
+      </div>
+   </div>
 
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_area :phone, id: :client_phone %>
-  </div>
+   <div class="row">
+      <div class="form-group col-md-4">
+        <%= form.label :phone %>
+        <%= form.text_area :phone, id: :client_phone,autofocus: true,:class => "form-control"  %>
+      </div>
+   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :client_email %>
-  </div>
+    <div class="row">
+      <div class="form-group col-md-4">
+        <%= form.label :email %>
+        <%= form.text_field :email, id: :client_email,autofocus: true,:class => "form-control"  %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :client_status %>
-  </div>
+    <div class="row">
+      <div class="form-group col-md-4">
+        <%= form.label :status %>
+        <%= form.text_field :status, id: :client_status,autofocus: true,:class => "form-control"  %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :insurance %>
-    <%= form.text_area :insurance, id: :client_insurance %>
-  </div>
+    <div class="row">
+      <div class="form-group col-md-4">
+        <%= form.label :insurance %>
+        <%= form.text_area :insurance, id: :client_insurance,autofocus: true,:class => "form-control"  %>
+      </div>
+    </div>
+    <!-- <div class="actions">
+      <%= form.submit %>
+    </div> -->
 
-  <div class="actions">
-    <%= form.submit %>
+    <%= button_tag(type: 'submit',class: 'btn btn-primary btn-lg button-drop') do %>
+        <span class="glyphicon glyphicon-floppy-disk"></span>save
+    <% end %>
   </div>
 <% end %>
