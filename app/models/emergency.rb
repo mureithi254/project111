@@ -3,4 +3,6 @@ class Emergency < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode
+
+  validates :address,:description,:client_id ,presence: {message: "This field is compulsory"}
 end
