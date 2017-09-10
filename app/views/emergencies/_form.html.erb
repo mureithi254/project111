@@ -12,21 +12,21 @@
   <% end %>
 <div class="container-fluid jumbotron">
     <div class="row">
-      <div class="form-group row col-md-4">
+      <div class="form-group col-md-4">
       <%= form.label :address %>
       <%= form.text_field :address, id: :emergency_address,autofocus: true,class: 'form-control' %>
      </div>
     </div>
   
   <div class="row">
-    <div class="form-group row col-md-4">
+    <div class="form-group col-md-4">
       <%= form.label :latitude %>
       <%= form.text_field :latitude, id: :emergency_latitude,autofocus: true,class: 'form-control' %>
     </div>
   </div>
   
   <div class="row">
-    <div class="form-group row col-md-4">
+    <div class="form-group col-md-4">
       <%= form.label :longitude %>
       <%= form.text_field :longitude, id: :emergency_longitude,autofocus: true,class: 'form-control'  %>
     </div>
@@ -34,14 +34,14 @@
   
 
   <div class="row">
-    <div class="form-group row col-md-4">
+    <div class="form-group col-md-4">
       <%= form.label :description %>
       <%= form.text_area :description, id: :emergency_description,autofocus: true,class: 'form-control'  %>
     </div>
   </div>
 
   <div class="row">
-    <div class="form-group row col-md-4">
+    <div class="form-group col-md-4">
       <%= form.label :client_id %>
       <%= form.text_field :client_id, id: :emergency_client_id,autofocus: true,class: 'form-control'  %>
     </div>

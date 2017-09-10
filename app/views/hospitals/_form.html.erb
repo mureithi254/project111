@@ -10,38 +10,58 @@
       </ul>
     </div>
   <% end %>
+   
+   <div class="container-fluid jumbotron">
+      <div class="row">
+        <div class="form-group col-md-4">
+          <%= form.label :address %>
+          <%= form.text_field :address, id: :hospital_address,autofocus: true,class: 'form-control' %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address, id: :hospital_address %>
-  </div>
+      <div class="row">
+        <div class="form-group col-md-4"
+          <%= form.label :latitude %>
+          <%= form.text_field :latitude, id: :hospital_latitude,autofocus: true,class: 'form-control' %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude, id: :hospital_latitude %>
-  </div>
+      <div class="row">
+        <div class="form-group col-md-4">
+          <%= form.label :longitude %>
+          <%= form.text_field :longitude, id: :hospital_longitude,autofocus: true,class: 'form-control' %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude, id: :hospital_longitude %>
-  </div>
+      <div class="row">
+        <div class="form-group col-md-4">
+          <%= form.label :name %>
+          <%= form.text_area :name, id: :hospital_name,autofocus: true,class: 'form-control' %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_area :name, id: :hospital_name %>
-  </div>
+      <div class="row">
+         <div class="form-group col-md-4">
+          <%= form.label :phone %>
+          <%= form.text_field :phone, id: :hospital_phone,autofocus: true,class: 'form-control' %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone, id: :hospital_phone %>
-  </div>
+      <div class="row">
+        <div class="form-group col-md-4">
+          <%= form.label :email %>
+          <%= form.text_field :email, id: :hospital_email,autofocus: true,class: 'form-control' %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :hospital_email %>
-  </div>
+      <!-- <div class="actions">
+        <%= form.submit %>
+      </div>  --> 
+      
+      <%= button_tag(type: 'submit',class: 'btn btn-primary btn-lg button-drop') do %>
+        <span class="glyphicon glyphicon-floppy-disk"></span>save
+      <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+   </div>
+
 <% end %>
