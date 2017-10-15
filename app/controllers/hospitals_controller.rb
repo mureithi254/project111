@@ -4,7 +4,18 @@ class HospitalsController < ApplicationController
   # GET /hospitals
   # GET /hospitals.json
   def index
-    @hospitals = Hospital.all
+    if params[:search].present?
+      @hospital = Hospital.near(params[:location],params[:distance] || 10,order: :distance)
+      @hospital = Gmaps4rails.build_markers(@hospital) do |hospital, marker|
+          marker.lat hospital.latitude
+          marker.lng hospital.longitude
+          marker.infowindow hospital.name
+     
+          marker.json({ description: emergency.name })
+      end 
+    else
+      @hospitals = Hospital.all
+    end
     
   end
 

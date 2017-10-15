@@ -4,6 +4,10 @@ class HomeController < ApplicationController
   	@hash = Gmaps4rails.build_markers(@emergency) do |emergency, marker|
       marker.lat emergency.latitude
       marker.lng emergency.longitude
-	end
+      marker.infowindow emergency.description
+ 
+      marker.json({ description: emergency.description })
+   
+	end 
   end
 end

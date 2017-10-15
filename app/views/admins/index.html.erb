@@ -1,0 +1,31 @@
+<div class="container">
+	<p id="notice" class="alert alert-danger"><%= notice %></p>
+	<%= link_to new_admin_path,:class => 'btn btn-info btn-lg client-new' do %>
+       <span class="glyphicon glyphicon-plus"></span>Add Admin
+	<% end %>
+
+	<h2>Admins</h2>
+	<div class="jumbotron">
+		<table class="table table-hover bordered">
+		<thead>
+			<th>Admin ID</th>
+			<th>First name</th>
+			<th>Last name</th>
+			<th>Email</th>
+		</thead>
+		<tbody>
+			<% @admin_list.each do |admin_details| %>
+              <tr>
+				<td><%= admin_details.id %></td>
+				<td><%= admin_details.first_name %></td>
+				<td><%= admin_details.last_name %></td>
+				<td><%= admin_details.email %></td>
+				<td><%= link_to 'Show',admin_details,:class => 'btn btn-success' %></td>
+				<td><%= link_to 'Edit',edit_admin_path(admin_details),:class => 'btn btn-info' %></td>
+				<td><%= link_to 'Destroy' ,admin_details,method: :delete ,data: { confirm: 'Are you sure?'},:class => 'btn btn-danger' %></td>
+			  </tr>
+            <% end %>
+		</tbody>
+	</table>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+	<p id="notice" class="alert alert-danger"><%= notice %></p>
+
+	<div class="jumbotron">
+		<table class="table table-hover bordered">
+		<thead>
+			<th>Admin ID</th>
+			<th>First name</th>
+			<th>Last name</th>
+			<th>Email</th>
+		</thead>
+		<tbody>
+			<% @staff_list.each do |staff_details| %>
+              <tr>
+				<td><%= staff_details.id %></td>
+				<td><%= staff_details.first_name %></td>
+				<td><%= staff_details.last_name %></td>
+				<td><%= staff_details.email %></td>
+				<td><%= link_to 'Show',staff_details,:class => 'btn btn-success' %></td>
+				<td><%= link_to 'Edit',edit_staff_path(staff_details),:class => 'btn btn-info' %></td>
+				<td><%= link_to 'Destroy',staff_details,method: :delete ,data: {confirm: 'Are you sure?'},:class => 'btn btn-danger ' %></td>
+			  </tr>
+            <% end %>
+		</tbody>
+	</table>
+	</div>
+</div>
