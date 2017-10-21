@@ -2,23 +2,25 @@
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
 
-<div>
-  <div id="map"></div>
-</div>
+<button id="emergency-switcher" class="btn btn-danger"><span class="glyphicon glyphicon-plus"></span>Emergency</button>
+<br>
+<br>
 
-<div>
-  <div id="controls">
-  	
-  </div>	
-</div>
+ <div id="emergency-register-form">
+      <%= load_emergency_form %>
+  </div>  
 
+
+  <div>
+    <div id="map"></div>
+  </div>
 
 <script>
 	handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-	handler.bounds.extendWith(markers);
-	handler.fitMapToBounds();
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  	handler.bounds.extendWith(markers);
+  	handler.fitMapToBounds();
 	});
 </script>
 

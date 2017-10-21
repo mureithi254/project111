@@ -70,6 +70,17 @@
 
 <script>
     $('#notice').hide();
+
+    var $MapAndForm = $("#emergency-register-form,#map");
+
+    $(document).ready(function(){
+          //code goes in here
+        $('#emergency-switcher').on('click',function(){
+          $MapAndForm.toggleClass('hide-form');
+        });
+    });
 </script>
   </body>
 </html>
+
+
