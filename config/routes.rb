@@ -2,6 +2,19 @@ Rails.application.routes.draw do
   
   root 'home#index'
   get 'dispatch/index'
+
+  #admin specific routes
+  get 'admin/attempt_login'
+  get 'admin/logout'
+  get 'admin/login'
+
+  #staff specific routes
+  get 'staff/attempt_login'
+  get 'staff/logout'
+  get 'staff/login'
+
+  
+
   
   resources :admins do
      member do

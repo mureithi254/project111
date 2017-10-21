@@ -2,11 +2,14 @@
 @import "bootstrap";
 
 
-
+      body{
+        background: rgb(83,129,172);
+      }
       #emergency-register-form{
          width: 40%;
          height: 600px;
          float: left;
+         background-color: rgb(135,122,214);
       }
 
       #emergency-register-form.hide-form{
@@ -16,7 +19,7 @@
       #map {
         width: 60%;
         height: 600px;
-        background-color: grey;
+        background: rgb(81,158,217);
         float: right;
       }
 
@@ -39,4 +42,20 @@
       }
       .dropdown-lift{
         margin-top: -40px;
+      }
+      #rapide-logo{
+         width: 20%;
+         margin-top: 0px;
+      }
+
+      #nav-bar{
+        width : 80%;
+        float: right;
+        margin-right : 40px;
+        margin-top: -80px;
+        background: rgb(229,227,223);
+        color: white;
+      }
+      #nav-bar.ul{
+         display: inline;
       }
