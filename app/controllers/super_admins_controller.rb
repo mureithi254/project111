@@ -20,13 +20,32 @@ class SuperAdminsController < ApplicationController
 	def destroy
 	end
 
-	def attempt_login
-	end
-
 	def login
 	end
 
+	def attempt_login
+		if params[:username].present? && params[:password].present?
+            super_admin = SuperAdmin.where(:username => params[:username]).first
+            if super_admin
+            	authorize_super_admin = super_admin.authenticate(params[:password])
+            end
+		end
+
+		if authorize_super_admin
+            session[:super_admin_id] = authorize_super_admin.id
+            flash[:notice] = 'You are logged in'
+            redirect_to super_admins_path
+
+        else
+        	flash.now[:notice] = 'Wrong username/password combination'
+        	redirect_to super_admins_login_path
+		end
+	end
+
 	def logout
+		session[:super_admin_id] = nil
+		flash[:notice] = 'You are logged out'
+		redirect_to super_admins_login_path
 	end
 
 	private

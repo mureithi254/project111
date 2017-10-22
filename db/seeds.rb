@@ -46,3 +46,13 @@ end
        password: "123456789"
    	}])
 end
+
+5.times do
+  SuperAdmin.create([{
+       first_name: Faker::Name.first_name,
+       last_name: Faker::Name.last_name,
+       username: Faker::Name.name,
+       email: Faker::Internet.email,
+       password: "123456789"
+    }])
+end

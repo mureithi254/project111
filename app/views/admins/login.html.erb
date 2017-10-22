@@ -1,11 +1,23 @@
-<p id='notice'><%= notice %></p>
+<div class="container">
+	<p id="notice" class="alert alert-success"><%= notice %></p>
+	<p><h3><em><strong>Login as Admin:</strong></em></h3></p>
+	<div class="jumbotron">
+		<%= form_tag(admins_attempt_login_path ,:method => :post) do %>
 
-<%= form_tag(admins_attempt_login_path ,:method => :post) do %>
-    <%= label_tag(:username) %>
-    <%= text_field_tag(:username,params[:username]) %>
+		    <div class="row">
+		    	<div class="form-group col-md-4">
+		    		<%= label_tag(:username) %>
+		            <%= text_field_tag(:username,params[:username],autofocus: true,class: 'form-control') %>
+		    	</div>
+		    </div>
 
-    <%= label_tag(:password) %>
-    <%= password_field_tag(:password) %>
-
-    <%= submit_tag("Log In") %>
-<% end %>
+	        <div class="row">
+	        	<div class="form-group col-md-4">
+	        		<%= label_tag(:password) %>
+	                <%= password_field_tag(:password,autofocus: true,class: 'form-control') %>
+	        	</div>
+	        </div>
+	    <%= submit_tag("Log In") %>
+	<% end %>
+	</div>
+</div>
