@@ -1,19 +1,28 @@
 Rails.application.routes.draw do
   
   root 'home#index'
+  get 'home/login'
+  get 'home/logout'
+  post 'home/attempt_login'
   get 'dispatch/index'
 
   #admin specific routes
-  get 'admin/attempt_login'
-  get 'admin/logout'
-  get 'admin/login'
+  post 'admins/attempt_login'
+  get 'admins/logout'
+  get 'admins/login'
 
   #staff specific routes
-  get 'staff/attempt_login'
-  get 'staff/logout'
-  get 'staff/login'
+ post 'staffs/attempt_login'
+  get 'staffs/logout'
+  get 'staffs/login'
 
-  
+  #super_admin specific routes
+  post 'super_admins/attempt_login'
+  get 'super_admins/login'
+  get 'super_admins/logout'
+
+
+
 
   
   resources :admins do
@@ -22,6 +31,11 @@ Rails.application.routes.draw do
      end
   end
   resources :staffs do
+     member do
+        get :delete
+     end
+  end
+  resources :super_admins do
      member do
         get :delete
      end

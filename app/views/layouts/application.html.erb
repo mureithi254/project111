@@ -40,7 +40,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>
           <ul class="dropdown-menu">
                 <li><a href="#">Admin Dashboard</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><%= link_to 'Logout' ,home_logout_path %></li>
           </ul>
         </li>
       </ul>
@@ -52,14 +52,12 @@
 </div> 
 
 <script>
-    $('#notice').hide();
-
     var $MapAndForm = $("#emergency-register-form,#map");
 
     $(document).ready(function(){
           //code goes in here
         $('#emergency-switcher').on('click',function(){
-          $MapAndForm.toggleClass('hide-form');
+          $MapAndForm.toggleClass('show-form');
         });
     });
 </script>

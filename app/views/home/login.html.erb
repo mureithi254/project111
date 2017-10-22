@@ -1,6 +1,6 @@
-<p id='notice'><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-<%= form_tag(admins_attempt_login_path ,:method => :post) do %>
+<%= form_tag(home_attempt_login_path ,:method => :post) do %>
     <%= label_tag(:username) %>
     <%= text_field_tag(:username,params[:username]) %>
 

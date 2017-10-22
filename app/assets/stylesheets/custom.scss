@@ -6,25 +6,29 @@
         background: rgb(83,129,172);
       }
       #emergency-register-form{
-         width: 40%;
-         height: 600px;
-         float: left;
-         background-color: rgb(135,122,214);
+        display: none;
       }
 
-      #emergency-register-form.hide-form{
-        display:none;
+      #emergency-register-form.show-form{
+        display: block;
+        width: 40%;
+        height: 600px;
+        float: left;
+        background-color: rgb(135,122,214);
       }
 
       #map {
-        width: 60%;
+        width: 100%;
         height: 600px;
         background: rgb(81,158,217);
         float: right;
       }
 
-      #map.hide-form{
-        width: 100%;
+      #map.show-form{
+        width: 60%;
+      }
+      #map.animation{
+        transition: 10s;
       }
        
       .client-details{

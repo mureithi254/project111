@@ -1,4 +1,5 @@
 class StaffsController < ApplicationController
+	
     before_action :set_staff, only: [:show,:update,:edit,:destroy]
 
 	def index
@@ -24,21 +25,15 @@ class StaffsController < ApplicationController
 	end
 
 	def update
-	end
+	end 
 
 	def edit
 	end
 
-	def login
-	end
-
-	def attempt_login
-	end
-
-	def logout
-	end
-
+	
     private
+    
+
     def set_staff
        @staff = Staff.find(params[:id])
     end

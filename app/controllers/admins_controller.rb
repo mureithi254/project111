@@ -1,4 +1,5 @@
 class AdminsController < ApplicationController
+	before_action :confirm_logged_in ,except: [:login,:attempt_login,:logout]
 	before_action :set_admin, only: [:show,:update,:edit,:destroy] 
 	#list all admins
 	def index
@@ -46,13 +47,39 @@ class AdminsController < ApplicationController
 	end
 	def attempt_login
 		#handle the login
+		if params[:username].present? && params[:password].present?
+           admin_found = Admin.where(:username => params[:username]).first
+
+           if admin_found
+             authorized_admin = admin_found.authenticate(params[:password])
+           end
+		end
+
+		if authorized_admin
+           session[:admin_id] = authorized_admin.id
+           flash[:notice] = 'You are logged in'
+           redirect_to admins_path
+       else
+       	   flash.now[:notice] = "invalid username/password combination"
+       	   render('login')
+		end
 	end
 
     #admin logout
 	def logout
+		session[:admin_id] = nil
+		flash[:notice] = 'Logged out'
+		redirect_to admins_login_path
 	end
 
 	private
+     #a method to confirm if a user is logged in before we could do anything
+	def confirm_logged_in 
+       unless session[:admin_id]
+         flash[:notice] = 'Please log in'
+         redirect_to admins_login_path 
+       end
+	end
 
 	def set_admin
       @admin = Admin.find(params[:id])
