@@ -13,38 +13,7 @@
      <p><%= image_tag('logo.png',:size => '150x100' ,:alt => 'logo' )%></p>
   </div>
 
-  <nav id="nav-bar">
-     <ul>
-        <div class="row form-search">
-          <div class="form-inline">
-          <%= form_tag(hospitals_path, method: "get") do %>
-            <%= text_field_tag :location,params[:location], autofocus: true,class: 'form-control',placeholder: 'Search hospital' %>
-            <%= text_field_tag :distance,params[:distance],autofocus: true,class: 'form-control',placeholder: 'Enter radius' do %>
-                 <select class="custom-select mb-2 mr-sm-2 mb-sm-0 btn btn-default" id="inlineFormCustomSelect">
-                          <option selected>Range(km)</option>
-                          <option value="1">1</option>
-                          <option value="2">5<option>
-                          <option value="3">10</option>
-                 </select>
-            <% end %>
-            <%= button_tag(type: 'search',class: 'btn btn-sm btn-primary',:name => nil) do %>
-                <span class="glyphicon glyphicon-search"></span>search
-             <% end %>
-          <% end %>
-        </div>
-      </div>
-    </ul>
-     
-       <ul class="nav navbar-nav navbar-right dropdown-lift">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-                <li><a href="#">Admin Dashboard</a></li>
-                <li><%= link_to 'Logout' ,home_logout_path %></li>
-          </ul>
-        </li>
-      </ul>
-  </nav>
+ 
 
 
 <div class="container-fluid">

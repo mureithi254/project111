@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  root 'home#index'
+  root 'public#public_page'
+
+  get 'home/index'
   get 'home/login'
   get 'home/logout'
   post 'home/attempt_login'
