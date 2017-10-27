@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'public#public_page'
 
   get 'home/index'
-  get 'home/login'
+  get 'login' ,:to => 'home#login',:as =>'/login'
   get 'home/logout'
   post 'home/attempt_login'
   get 'dispatch/index'

@@ -1,3 +1,25 @@
-<p>
-	THis is a good day to be home
-</p>
+<style>
+	.patrick-image{
+		margin-left: 30px;
+		float: left;
+		width: 40%;
+	}
+	.redirection-message{
+		float: right;
+		font-size: 50px;
+		font-family: ubuntu;
+		width: 60%;
+	}
+	.redirect-link{
+		color: red;
+	}
+</style>
+<div class="container">
+	<div class="patrick-image">
+		<p><%= image_tag('patrick.jpg',alt: 'A funny pictrure of patrick') %></p>
+	</div>
+	<div class="redirection-message">
+		<p>If you've been redirected here please leave this page by clicking <span class="redirect-link"><em>here</em></span></p>
+		<p>Otherwise you know what to do.</p>
+	</div>
+</div>

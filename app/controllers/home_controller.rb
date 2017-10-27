@@ -31,14 +31,14 @@ class HomeController < ApplicationController
 
 	   else
 	   	  flash.now[:notice] = 'Invalid username/password combination'
-	   	  redirect_to home_login_path
+	   	  redirect_to login_path
 		end
 	end
 
 	def logout
 		session[:staff_id] = nil
 		flash[:notice] = 'You are logged out'
-		redirect_to home_login_path
+		redirect_to login_path
 	end
 
 	private
@@ -46,7 +46,7 @@ class HomeController < ApplicationController
     def confirm_logged_in
       unless session[:staff_id]
          flash[:notice] = 'You must be logged in'
-         redirect_to home_login_path
+         redirect_to login_path
       end
     end
 end
