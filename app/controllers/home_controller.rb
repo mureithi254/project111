@@ -27,7 +27,7 @@ class HomeController < ApplicationController
 		if authorized_staff
 	       session[:staff_id] = authorized_staff.id
 	       flash[:notice] = 'You are logged in'
-	       redirect_to home_index_path
+	       redirect_to home_path
 
 	   else
 	   	  flash.now[:notice] = 'Invalid username/password combination'
