@@ -1,0 +1,38 @@
+<div class="container">
+  <p class="alert alert-success"><%= notice %></p>
+
+   <%= link_to new_super_admin_path,class: 'btn btn-info btn-lg client-new' do %>
+     <span class="gyphicon glyphicon-plus"></span>Add Super-Admin
+   <% end %>
+    <br>
+    <br>
+    <br>
+    <br>
+   <div class="jumbotron">
+     <table class="table table-hover">
+     	<thead>
+     	  <tr>
+     		<th>Super Admin ID:</th>
+     		<th>First Name</th>
+     		<th>Last Name</th>
+     		<th>Username</th>
+     		<th>Email</th>
+     	  </tr>
+     	</thead>
+     	<tbody>
+     		<% @super_admin.each do |superadmin| %>
+               <tr>
+               	 <td><%= superadmin.id %></td>
+               	 <td><%= superadmin.first_name %></td>
+               	 <td><%= superadmin.last_name %></td>
+               	 <td><%= superadmin.username %></td>
+               	 <td><%= superadmin.email %></td>
+               	 <td><%= link_to 'Show',superadmin,class: 'btn btn-success' %></td>
+               	 <td><%= link_to 'Edit',edit_super_admin_path(superadmin),class: 'btn btn-info' %></td>
+               	 <td><td><%= link_to 'Delete',superadmin,method: :delete,data: {confirm: 'Are you sure?'},class: 'btn btn-danger' %></td></td>
+               </tr>
+     		<% end%>
+     	</tbody>
+     </table>   	
+   </div>
+</div>

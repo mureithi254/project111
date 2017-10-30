@@ -1,3 +1,8 @@
 <div class="container-fluid">
-	<%= render 'form',admin: @admin %>
+	<legend><h1>Edit Admin Details</h1></legend>
+	 <div class="jumbotron">
+	 	<%= render 'form',admin: @admin %>
+	 </div>
+	 <%=link_to 'Show',@admin,class: 'btn btn-default' %> |
+	 <%= link_to 'Back',admin_path %>
 </div>

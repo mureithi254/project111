@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   def admin_confirm_logged_in 
        unless session[:admin_id]
          flash[:notice] = 'Please log in'
-         redirect_to admins_login_path 
+         redirect_to admin_path 
        end
 	end
 end

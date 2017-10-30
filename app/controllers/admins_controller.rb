@@ -73,7 +73,7 @@ class AdminsController < ApplicationController
 	def logout
 		session[:admin_id] = nil
 		flash[:notice] = 'Logged out'
-		redirect_to admins_login_path
+		redirect_to admin_path
 	end
 
 	private

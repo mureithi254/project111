@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_tag( model: super_admin,locale: true ) do |form| %>
+  <%= form_with( model: super_admin,locale: true ) do |form| %>
      <% if super_admin.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(client.errors.count, "error") %> prohibited this super_admin from being saved:</h2>
@@ -10,12 +10,12 @@
 	      <% end %>
 	      </ul>
 	    </div>
-    <% end %>
+     <% end %>
 
       <div class="container-fluid jumbotron">
   	        <div class="row">
 		    	<div class="form-group col-md-4">
-		    		<%= form.label :fname %>
+		    		<%= form.label :first_name %>
 		    		<%= form.text_field :first_name,id: :first_name ,autofocus: true,class: 'form-control'%>
 		    	</div>
 		    </div>

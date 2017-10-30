@@ -1,0 +1,33 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+   <div class="client-details">
+    <p>
+      <strong>Super Admin Number: </strong>
+        <%= @super_admin.id %>
+    </p>
+
+    <p>
+      <strong>First_name:</strong>
+      <%= @super_admin.first_name %>
+    </p>
+
+    <p>
+      <strong>Last_name:</strong>
+      <%= @super_admin.last_name %>
+    </p>
+
+    <p>
+      <strong>Username:</strong>
+      <%= @super_admin.email %>
+    </p>
+
+    <p>
+      <strong>Email:</strong>
+      <%= @super_admin.email %>
+    </p>
+
+   </div>
+  <%= link_to 'Edit', edit_super_admin_path(@super_admin),:class => 'btn btn-default' %> |
+  <%= link_to 'Back', super_admins_path,:class => 'btn btn-link' %>
+</div>
