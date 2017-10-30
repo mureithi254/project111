@@ -1,5 +1,5 @@
 class StaffsController < ApplicationController
-	
+	before_action :admin_confirm_logged_in
     before_action :set_staff, only: [:show,:update,:edit,:destroy]
 
 	def index

@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   #admin specific routes
   post 'admins/attempt_login'
   get 'admins/logout'
-  get 'admins/login'
+  get 'admin',:to => 'admins#login',:as => '/admin'
+  get 'admins/admin_menu'
 
   #staff specific routes
  post 'staffs/attempt_login'
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   post 'super_admins/attempt_login'
   get 'super_admins/login'
   get 'super_admins/logout'
+  get 'super_admins/super_admins_menu'
 
 
 

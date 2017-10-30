@@ -1,4 +1,5 @@
 class HospitalsController < ApplicationController
+  before_action :admin_confirm_logged_in
   before_action :set_hospital, only: [:show, :edit, :update, :destroy]
 
   # GET /hospitals

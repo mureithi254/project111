@@ -1,9 +1,13 @@
 class AdminsController < ApplicationController
-	before_action :confirm_logged_in ,except: [:login,:attempt_login,:logout]
+	before_action :admin_confirm_logged_in ,only: [:admin_menu]
+	before_action :confirm_super_admin_is_logged_in,only:[:index,:new,:create,:edit,:update]
 	before_action :set_admin, only: [:show,:update,:edit,:destroy] 
 	#list all admins
 	def index
 		@admin_list = Admin.all
+	end
+
+	def admin_menu
 	end
 
 
@@ -58,7 +62,7 @@ class AdminsController < ApplicationController
 		if authorized_admin
            session[:admin_id] = authorized_admin.id
            flash[:notice] = 'You are logged in'
-           redirect_to admins_path
+           redirect_to admins_admin_menu_path
        else
        	   flash.now[:notice] = "invalid username/password combination"
        	   render('login')
@@ -74,12 +78,7 @@ class AdminsController < ApplicationController
 
 	private
      #a method to confirm if a user is logged in before we could do anything
-	def confirm_logged_in 
-       unless session[:admin_id]
-         flash[:notice] = 'Please log in'
-         redirect_to admins_login_path 
-       end
-	end
+	
 
 	def set_admin
       @admin = Admin.find(params[:id])

@@ -1,4 +1,5 @@
 class EmergenciesController < ApplicationController
+  before_action :admin_confirm_logged_in
   before_action :set_emergency, only: [:show, :edit, :update, :destroy]
 
   # GET /emergencies
