@@ -5,19 +5,32 @@ class HospitalsController < ApplicationController
   # GET /hospitals
   # GET /hospitals.json
   def index
-    if params[:search].present?
-      @hospital = Hospital.near(params[:location],params[:distance] || 10,order: :distance)
-      @hospital = Gmaps4rails.build_markers(@hospital) do |hospital, marker|
-          marker.lat hospital.latitude
-          marker.lng hospital.longitude
-          marker.infowindow hospital.name
-     
-          marker.json({ description: emergency.name })
-      end 
-    else
-      @hospitals = Hospital.all
-    end
-    
+    @hospitals = Hospital.all
+    @geojson = Array.new
+
+      @hospitals.each do |hospital|
+         @geojson << {
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [hospital.longitude, hospital.latitude]
+              },
+              properties: {
+                name: hospital.name,
+                address: hospital.address,
+                contact: hospital.phone,
+                BusType: 'hospital',
+                popupContent: "#{hospital.address} and contact #{hospital.phone}",
+                :'marker-color' => '#00607d',
+                :'marker-symbol' => 'circle',
+                :'marker-size' => 'medium'
+              }
+            }
+      end
+      respond_to do |format|
+         format.html
+         format.json{ render json: @geojson }
+      end
   end
 
   # GET /hospitals/1

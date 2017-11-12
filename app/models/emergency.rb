@@ -5,4 +5,7 @@ class Emergency < ApplicationRecord
   after_validation :geocode
 
   validates :address,:description,:client_id ,presence: {message: "This field is compulsory"}
+
 end
+
+
