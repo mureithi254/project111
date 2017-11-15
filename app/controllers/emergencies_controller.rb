@@ -6,6 +6,30 @@ class EmergenciesController < ApplicationController
   # GET /emergencies.json
   def index
     @emergencies = Emergency.all
+    @emergency_last = Emergency.last
+    @geojson = Array.new
+
+         @geojson << {
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [@emergency_last.longitude, @emergency_last.latitude]
+              },
+              properties: {
+                name: @emergency_last.description,
+                address: @emergency_last.address,
+                description: @emergency_last.description,
+                BusType: 'emergency',
+                :'marker-color' => '#00607d',
+                :'marker-symbol' => 'circle',
+                :'marker-size' => 'medium'
+              }
+            }
+  
+      respond_to do |format|
+         format.html
+         format.json{ render json: @geojson }
+      end
   end
 
   # GET /emergencies/1

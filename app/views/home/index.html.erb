@@ -8,76 +8,58 @@
 
    <style>
         body { margin:0; padding:0; }
-        #mapid { position:absolute; top:0; bottom:0; width:100%; }
+        #mapid { position:absolute; top:0; bottom:0; width:60%;float: left; }
+        .dispatch-section { float:left;width: 40%;margin-left: 1100px; }
+        
     </style>
- <nav id="nav-bar">
-     <ul>
-        <div class="row form-search">
-          <div class="form-inline">
-          <%= form_tag(hospitals_path, method: "get") do %>
-            <%= text_field_tag :location,params[:location], autofocus: true,class: 'form-control',placeholder: 'Search hospital' %>
-            <%= text_field_tag :distance,params[:distance],autofocus: true,class: 'form-control',placeholder: 'Enter radius' do %>
-                 <select class="custom-select mb-2 mr-sm-2 mb-sm-0 btn btn-default" id="inlineFormCustomSelect">
-                          <option selected>Range(km)</option>
-                          <option value="1">1</option>
-                          <option value="2">5<option>
-                          <option value="3">10</option>
-                 </select>
-            <% end %>
-            <%= button_tag(type: 'search',class: 'btn btn-sm btn-primary',:name => nil) do %>
-                <span class="glyphicon glyphicon-search"></span>search
-             <% end %>
-          <% end %>
-        </div>
-      </div>
-    </ul>
-     
-       <ul class="nav navbar-nav navbar-right dropdown-lift">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-                <li><a href="#">Admin Dashboard</a></li>
-                <li><%= link_to 'Logout' ,logout_path %></li>
-          </ul>
-        </li>
-      </ul>
-  </nav>
-  <br>
-  <br>
-  <p id="notice" class="alert alert-info"><%= notice %></p>
-
-<button id="emergency-switcher" class="btn btn-danger"><span class="glyphicon glyphicon-plus"></span>Emergency</button>
-<br>
-<br>
-
- <div id="emergency-register-form">
-      <%= load_emergency_form %>
-  </div>  
 
 
   <div>
     <div id="mapid"></div>
   </div>
+  <div class="dispatch-section">
+    <%= link_to new_emergency_path ,:class => 'btn btn-danger btn-lg' do %>
+        <span class="glyphicon glyphicon-plus"></span>New Emergency
+    <% end %>
+    
+     <table class="table table-hover table-hospitals">
+        <caption><center><em>Nearest hospitals to the point of emergency</em></center></caption>
+        <thead>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Phone</th>
+        </thead>
+        <tbody>
+              <% @hospitals_nearest.each do |nearest_hospitals| %>
+               <tr>
+                 <td><%= nearest_hospitals.name %></td>
+                 <td><%= nearest_hospitals.address %></td>
+                 <td><%= nearest_hospitals.phone %></td>
+                 <td><a href="#" class="btn btn-danger">Dispatch</a></td>
+               </tr>
+              <% end %>
+        </tbody>
+     </table>
+  </div>
+  
+<script>
 
-  <script>
+       var mymap = L.map('mapid').setView([-1.3938636,36.7442377], 13);
 
-     var mymap = L.map('mapid').setView([-1.3938636,36.7442377], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoibXVyZWl0aGkyNTQiLCJhIjoiY2o5aGZ2ZHFzMGg5ZTMzczJrbnpoZGR5MCJ9.3tGGvQdQd9ELETOYXgoxEw'
+      }).addTo(mymap);
+                   
+          //Ajax request for the Hospitals data
      var mapdata =  $.ajax({
             url: '/hospitals.json',
           dataType: 'text',
              success: function(data) {
           var geojson;
           geojson = $.parseJSON(data);
-
-           
-
-          L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-              attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-              maxZoom: 18,
-              id: 'mapbox.streets',
-              accessToken: 'pk.eyJ1IjoibXVyZWl0aGkyNTQiLCJhIjoiY2o5aGZ2ZHFzMGg5ZTMzczJrbnpoZGR5MCJ9.3tGGvQdQd9ELETOYXgoxEw'
-            }).addTo(mymap);
-                   
 
                 //Adding custom markers to maps
                 var HospIcon = L.icon({
@@ -94,7 +76,7 @@
                           L.marker(latlng, 
                             {icon: HospIcon
                           }).addTo(mymap).on('mouseover', function() {
-                                        this.bindPopup(feature.properties.name + '<br>' + feature.properties.address + '<br>' + feature.properties.contact).openPopup();
+                                        this.bindPopup(feature.properties.name).openPopup();
                                      });
                  }
           });
@@ -112,6 +94,42 @@
     
         });
 
+     //Ajax request for the Emergencies data
+       
+         var EmergData = $.ajax({
+            url: '/emergencies.json',
+            dataType: 'text',
+            success : function(data){
+              var geojson;
+              geojson = $.parseJSON(data);
+
+               //Adding custom markers to maps
+                var EmergencyIcon = L.icon({
+              iconUrl: '<%= asset_path('emergency.png') %>',
+
+              iconSize:     [30, 60], // size of the icon
+              iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+              shadowAnchor: [4, 62],  // the same for the shadow
+              popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+          });
+
+          var Custom_marker = L.geoJSON(geojson, {
+                       pointToLayer : function(feature,latlng){
+                          L.marker(latlng, 
+                            {icon: EmergencyIcon
+                          }).addTo(mymap).on('mouseover', function() {
+                                        this.bindPopup(feature.properties.name + '<br>' + feature.properties.description).openPopup();
+                                     });
+                 }
+          });
+               
+            }
+         });
+
+
+
+
+
 
       var popup = L.popup();
 
@@ -125,5 +143,160 @@
     mymap.on('click', onMapClick);
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

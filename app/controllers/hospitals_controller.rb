@@ -8,19 +8,22 @@ class HospitalsController < ApplicationController
     @hospitals = Hospital.all
     @geojson = Array.new
 
-      @hospitals.each do |hospital|
+    emergency_last = Emergency.last
+    @hospitals_nearest = Hospital.near([emergency_last.latitude,emergency_last.longitude],5,:units => :km)
+
+      @hospitals_nearest.each do |hospital_near|
          @geojson << {
               type: 'Feature',
               geometry: {
                 type: 'Point',
-                coordinates: [hospital.longitude, hospital.latitude]
+                coordinates: [hospital_near.longitude, hospital_near.latitude]
               },
               properties: {
-                name: hospital.name,
-                address: hospital.address,
-                contact: hospital.phone,
+                name: hospital_near.name,
+                address: hospital_near.address,
+                contact: hospital_near.phone,
                 BusType: 'hospital',
-                popupContent: "#{hospital.address} and contact #{hospital.phone}",
+                popupContent: "#{hospital_near.address} and contact #{hospital_near.phone}",
                 :'marker-color' => '#00607d',
                 :'marker-symbol' => 'circle',
                 :'marker-size' => 'medium'

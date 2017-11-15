@@ -2,15 +2,9 @@ class HomeController < ApplicationController
 	before_action :confirm_logged_in ,only: [:index]
 
 	def index
-		@emergency = Emergency.last
-
-		@geojson = Array.new
-		respond_to do |format|
-          format.html
-          format.json{render json: @geojson}
-		end
+        emergency_last = Emergency.last
+        @hospitals_nearest = Hospital.near([emergency_last.latitude,emergency_last.longitude],5,:units => :km)
 	end
-
 
 	def login
 	end
