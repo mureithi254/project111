@@ -61,7 +61,7 @@ group :development do
   gem 'gmaps4rails'
 end
 
-group :production, :test do 
+group :production do
    gem 'pg'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
