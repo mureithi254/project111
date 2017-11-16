@@ -17,8 +17,7 @@ gem 'sprockets-rails','2.3.2'
 #add the underscore-rails to the application to include the underscorejs functionality
 gem 'underscore-rails'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-# Use Puma as the app server
+
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
